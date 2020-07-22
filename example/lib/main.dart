@@ -28,7 +28,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     //Set the fit size (fill in the screen size of the device in the design) If the design is based on the size of the iPhone6 ​​(iPhone6 ​​750*1334)
-    ScreenUtil.init(context, width: 750, height: 1334, allowFontScaling: false);
+    ScreenUtil(width: 750, height: 1334, allowFontScaling: false);
 
     return ExampleWidget(title: 'FlutterScreenUtil Demo');
   }
@@ -58,7 +58,7 @@ class _ExampleWidgetState extends State<ExampleWidget> {
             Row(
               children: <Widget>[
                 Container(
-                  padding: EdgeInsets.all(ScreenUtil().setWidth(10)),
+                  padding: EdgeInsets.all(ScreenUtil.instance.convertWidth(10)),
                   width: 375.w,
                   height: 200.h,
                   color: Colors.red,
@@ -66,20 +66,21 @@ class _ExampleWidgetState extends State<ExampleWidget> {
                     'My width:${375.w}dp \n'
                     'My height:${200.h}dp',
                     style: TextStyle(
-                        color: Colors.white, fontSize: ScreenUtil().setSp(24)),
+                        color: Colors.white,
+                        fontSize: ScreenUtil.instance.convertFontSize(24)),
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.all(ScreenUtil().setWidth(10)),
-                  width: ScreenUtil().setWidth(375),
-                  height: ScreenUtil().setHeight(200),
+                  padding: EdgeInsets.all(ScreenUtil.instance.convertWidth(10)),
+                  width: ScreenUtil.instance.convertWidth(375),
+                  height: ScreenUtil.instance.convertHeight(200),
                   color: Colors.blue,
                   child: Text(
                       'My width:${0.5.wp}dp \n'
-                      'My height:${ScreenUtil().setHeight(200)}dp',
+                      'My height:${ScreenUtil.instance.convertHeight(200)}dp',
                       style: TextStyle(
                           color: Colors.white,
-                          fontSize: ScreenUtil().setSp(24))),
+                          fontSize: ScreenUtil.instance.convertFontSize(24))),
                 ),
               ],
             ),
@@ -91,15 +92,15 @@ class _ExampleWidgetState extends State<ExampleWidget> {
             Text('Bottom safe zone distance:${ScreenUtil.bottomBarHeight}dp'),
             Text('Status bar height:${ScreenUtil.statusBarHeight}dp'),
             Text(
-              'Ratio of actual width dp to design draft px:${ScreenUtil().scaleWidth}',
+              'Ratio of actual width dp to design draft px:${ScreenUtil.instance.scaleWidth}',
               textAlign: TextAlign.center,
             ),
             Text(
-              'Ratio of actual height dp to design draft px:${ScreenUtil().scaleHeight}',
+              'Ratio of actual height dp to design draft px:${ScreenUtil.instance.scaleHeight}',
               textAlign: TextAlign.center,
             ),
             SizedBox(
-              height: ScreenUtil().setHeight(100),
+              height: ScreenUtil.instance.convertHeight(100),
             ),
             Text('System font scaling factor:${ScreenUtil.textScaleFactor}'),
             Column(
@@ -109,14 +110,14 @@ class _ExampleWidgetState extends State<ExampleWidget> {
                     'My font size is 24px on the design draft and will not change with the system.',
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 24.sp,
+                      fontSize: 24.px,
                     )),
                 Text(
                     'My font size is 24px on the design draft and will change with the system.',
                     style: TextStyle(
                         color: Colors.black,
-                        fontSize: ScreenUtil()
-                            .setSp(24, allowFontScalingSelf: true))),
+                        fontSize: ScreenUtil.instance
+                            .convertFontSize(24, allowFontScaling: true))),
               ],
             )
           ],
@@ -125,8 +126,7 @@ class _ExampleWidgetState extends State<ExampleWidget> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.title),
         onPressed: () {
-          ScreenUtil.init(context,
-              width: 1500, height: 1334, allowFontScaling: false);
+          ScreenProperties(width: 1500, height: 1334, allowFontScaling: false);
           setState(() {});
         },
       ),
@@ -143,13 +143,13 @@ class _ExampleWidgetState extends State<ExampleWidget> {
     print(
         'Status bar height px:${ScreenUtil.statusBarHeight}dp'); //Status bar height , Notch will be higher Unit px
     print(
-        'Ratio of actual width dp to design draft px:${ScreenUtil().scaleWidth}');
+        'Ratio of actual width dp to design draft px:${ScreenUtil.instance.scaleWidth}');
     print(
-        'Ratio of actual height dp to design draft px:${ScreenUtil().scaleHeight}');
+        'Ratio of actual height dp to design draft px:${ScreenUtil.instance.scaleHeight}');
     print(
-        'The ratio of font and width to the size of the design:${ScreenUtil().scaleWidth * ScreenUtil.pixelRatio}');
+        'The ratio of font and width to the size of the design:${ScreenUtil.instance.scaleWidth * ScreenUtil.pixelRatio}');
     print(
-        'The ratio of  height width to the size of the design:${ScreenUtil().scaleHeight * ScreenUtil.pixelRatio}');
+        'The ratio of  height width to the size of the design:${ScreenUtil.instance.scaleHeight * ScreenUtil.pixelRatio}');
     print('System font scaling:${ScreenUtil.textScaleFactor}');
     print('0.5 times the screen width:${0.5.wp}');
     print('0.5 times the screen height:${0.5.hp}');
