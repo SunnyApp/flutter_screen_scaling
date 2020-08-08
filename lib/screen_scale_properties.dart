@@ -92,7 +92,7 @@ class ScreenScaleProperties {
   }
 
   ScreenScaleProperties init(
-      {double? width, double? height, bool? allowFontScaling}) {
+      {double width, double height, bool allowFontScaling}) {
     return ScreenScaleProperties(
         width: width, height: height, allowFontScaling: allowFontScaling);
   }

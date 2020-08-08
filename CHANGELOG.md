@@ -6,6 +6,9 @@
  * @Description: Update log
  -->
 
+# 2.3.2 (ericm)
+- Removing nndb
+ 
 # 2.3.1 (ericm)
 - Downgrading sdk version 
 
