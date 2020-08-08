@@ -6,6 +6,9 @@
  * @Description: Update log
  -->
 
+# 2.3.1 (ericm)
+- Downgrading sdk version 
+
 # 2.3.0
 - We still need context to initialize, sorry.
 
