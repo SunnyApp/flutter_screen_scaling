@@ -3,7 +3,7 @@
  * email: zhuoyuan93@gmail.com
  */
 
-library flutter_screenutil;
+library flutter_screen_scaling;
 
+export 'screen_scale_properties.dart';
 export 'size_extension.dart';
-export 'screenutil.dart';

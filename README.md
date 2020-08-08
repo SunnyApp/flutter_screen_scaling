@@ -1,18 +1,14 @@
 
-# flutter_screenutil
-[![pub package](https://img.shields.io/pub/v/flutter_screenutil.svg)](https://pub.dartlang.org/packages/flutter_screenutil)
+# flutter_screen_scaling
+[![pub package](https://img.shields.io/pub/v/flutter_screen_scaling.svg)](https://pub.dartlang.org/packages/flutter_screen_scaling)
 
-**A flutter plugin for adapting screen and font size.Let your UI display a reasonable layout on different screen sizes!**
+** A flutter plugin for adapting screen and font size to different scales.  Originally forked from flutter_screenutil with some cosmetic changes.
 
-*Note*: This plugin is still under development, and some APIs might not be available yet.
+[中文文档](https://github.com/SunnyApp/flutter_screen_scaling/blob/master/README_CN.md)  
 
-[中文文档](https://github.com/OpenFlutter/flutter_screenutil/blob/master/README_CN.md)  
+[github](https://github.com/SunnyApp/flutter_screen_scaling)
 
-[README em Português](https://github.com/OpenFlutter/flutter_screenutil/blob/master/README_PT.md)
-
-[github](https://github.com/OpenFlutter/flutter_screenutil)
-
-[Update log](https://github.com/OpenFlutter/flutter_screenutil/blob/master/CHANGELOG.md)
+[Update log](https://github.com/SunnyApp/flutter_screen_scaling/blob/master/CHANGELOG.md)
 
 ## Usage:
 
@@ -23,13 +19,13 @@ If there is any problem with the new version, please use the previous version
 dependencies:
   flutter:
     sdk: flutter
-  # add flutter_screenutil
-  flutter_screenutil: ^2.3.0
+ 
+  flutter_screen_scaling: ^2.3.0
 ```
 
 ### Add the following imports to your Dart code:
 ```
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_screen_scaling/flutter_screen_scaling.dart';
 ```
 
 ### Property

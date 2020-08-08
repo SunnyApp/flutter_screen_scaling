@@ -1,28 +1,28 @@
-import 'package:flutter_screenutil/screenutil.dart';
+import 'screen_scale_properties.dart';
 
 extension SizeExtension on num {
-  ///[ScreenUtil.setWidth]
-  double get w => ScreenUtil.instance.convertWidth(this);
+  ///[ScreenScale.setWidth]
+  double get w => ScreenScale.convertWidth(this);
 
-  ///[ScreenUtil.setHeight]
-  double get h => ScreenUtil.instance.convertHeight(this);
+  ///[ScreenScale.setHeight]
+  double get h => ScreenScale.convertHeight(this);
 
-  ///[ScreenUtil.setSp]
-  double get px => ScreenUtil.instance.convertFontSize(this);
+  ///[ScreenScale.setSp]
+  double get px => ScreenScale.convertFontSize(this);
 
-  ///[ScreenUtil.setSp]
+  ///[ScreenScale.setSp]
   double get ptScaled =>
-      ScreenUtil.instance.convertFontSize(this, allowFontScaling: true);
+      ScreenScale.convertFontSize(this, allowFontScaling: true);
 
-  ///[ScreenUtil.setSp]
+  ///[ScreenScale.setSp]
   double get ptNoScaling =>
-      ScreenUtil.instance.convertFontSize(this, allowFontScaling: false);
+      ScreenScale.convertFontSize(this, allowFontScaling: false);
 
   ///屏幕宽度的倍数
   ///Multiple of screen width
-  double get wp => ScreenUtil.screenWidth * this;
+  double get wp => ScreenScale.screenWidth * this;
 
   ///屏幕高度的倍数
   ///Multiple of screen height
-  double get hp => ScreenUtil.screenHeight * this;
+  double get hp => ScreenScale.screenHeight * this;
 }
