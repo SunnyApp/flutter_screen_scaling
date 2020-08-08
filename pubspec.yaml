@@ -4,10 +4,9 @@ version: 2.3.0
 homepage: https://github.com/SunnyFlutter/flutter_screen_scaling
 
 environment:
-  sdk: ">=2.9.0-8.0 <3.0.0"
+  sdk: ">2.9.0 <3.0.0"
 
 dependencies:
-
   flutter:
     sdk: flutter
 
@@ -18,5 +17,3 @@ dev_dependencies:
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec
 
-# The following section is specific to Flutter.
-flutter:

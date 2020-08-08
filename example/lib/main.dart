@@ -35,9 +35,9 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class ExampleWidget extends StatefulWidget {
-  const ExampleWidget({Key key, this.title}) : super(key: key);
+  const ExampleWidget({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  final String? title;
 
   @override
   _ExampleWidgetState createState() => _ExampleWidgetState();

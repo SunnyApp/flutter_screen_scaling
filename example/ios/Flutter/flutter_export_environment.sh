@@ -10,6 +10,6 @@ export "FLUTTER_FRAMEWORK_DIR=/Users/ericm/sunny/plugin/.direnv/flutter/1.21.0-7
 export "FLUTTER_BUILD_NAME=1.0.0"
 export "FLUTTER_BUILD_NUMBER=1"
 export "DART_OBFUSCATION=false"
-export "TRACK_WIDGET_CREATION=true"
+export "TRACK_WIDGET_CREATION=false"
 export "TREE_SHAKE_ICONS=false"
 export "PACKAGE_CONFIG=.packages"
