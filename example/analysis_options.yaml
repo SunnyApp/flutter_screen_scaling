@@ -17,8 +17,7 @@ analyzer:
     implicit-casts: false
 
   enable-experiment:
-
-    - extension-methods
+    - non-nullable
 
   errors:
     throw_in_finally: warning

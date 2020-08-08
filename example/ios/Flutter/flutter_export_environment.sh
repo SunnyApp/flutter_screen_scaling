@@ -1,15 +1,15 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
-export "FLUTTER_ROOT=/Users/ericm/sunny/plugin/.direnv/flutter/1.21.0-7.0.pre"
+export "FLUTTER_ROOT=/Users/ericm/fvm/versions/beta"
 export "FLUTTER_APPLICATION_PATH=/Users/ericm/sunny/plugin/flutter_screen_scaling/example"
 export "FLUTTER_TARGET=/Users/ericm/sunny/plugin/flutter_screen_scaling/example/lib/main.dart"
 export "FLUTTER_BUILD_DIR=build"
 export "SYMROOT=${SOURCE_ROOT}/../build/ios"
 export "OTHER_LDFLAGS=$(inherited) -framework Flutter"
-export "FLUTTER_FRAMEWORK_DIR=/Users/ericm/sunny/plugin/.direnv/flutter/1.21.0-7.0.pre/bin/cache/artifacts/engine/ios"
+export "FLUTTER_FRAMEWORK_DIR=/Users/ericm/fvm/versions/beta/bin/cache/artifacts/engine/ios"
 export "FLUTTER_BUILD_NAME=1.0.0"
 export "FLUTTER_BUILD_NUMBER=1"
 export "DART_OBFUSCATION=false"
-export "TRACK_WIDGET_CREATION=false"
+export "TRACK_WIDGET_CREATION=true"
 export "TREE_SHAKE_ICONS=false"
 export "PACKAGE_CONFIG=.packages"

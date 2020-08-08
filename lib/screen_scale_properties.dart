@@ -5,14 +5,14 @@
 
 import 'package:flutter/material.dart';
 
-ScreenScaleProperties? _instance;
+ScreenScaleProperties _instance;
 const int screenDefaultWidth = 1080;
 const int screenDefaultHeight = 1920;
 
 // ignore: non_constant_identifier_names
 ScreenScaleProperties get ScreenScale {
   if (_instance == null) throw "Screen properties not initialized.";
-  return _instance!;
+  return _instance;
 }
 
 class ScreenScaleProperties {
@@ -61,20 +61,20 @@ class ScreenScaleProperties {
   final double scaleHeight;
 
   ScreenScaleProperties._(
-      {required this.uiWidthPx,
-      required this.uiHeightPx,
-      required this.allowFontScaling,
-      required this.screenWidth,
-      required this.screenHeight,
-      required this.pixelRatio,
-      required this.statusBarHeight,
-      required this.bottomBarHeight,
-      required this.textScaleFactor})
+      {@required this.uiWidthPx,
+      @required this.uiHeightPx,
+      @required this.allowFontScaling,
+      @required this.screenWidth,
+      @required this.screenHeight,
+      @required this.pixelRatio,
+      @required this.statusBarHeight,
+      @required this.bottomBarHeight,
+      @required this.textScaleFactor})
       : scaleWidth = screenWidth / (uiWidthPx * pixelRatio),
         scaleHeight = screenHeight / (uiHeightPx * pixelRatio);
 
   factory ScreenScaleProperties(
-      {double? width, double? height, bool? allowFontScaling}) {
+      {double width, double height, bool allowFontScaling}) {
     if (width == null && height == null && allowFontScaling == null) {
       return ScreenScale;
     }
@@ -121,7 +121,7 @@ class ScreenScaleProperties {
   ///Font size adaptation method
   ///@param [fontSize] The size of the font on the UI design, in px.
   ///@param [allowFontScaling]
-  double convertFontSize(num fontSize, {bool? allowFontScaling}) {
+  double convertFontSize(num fontSize, {bool allowFontScaling}) {
     allowFontScaling ??= this.allowFontScaling;
     return allowFontScaling
         ? (scaleText * fontSize)
