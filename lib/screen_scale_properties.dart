@@ -3,6 +3,8 @@
  * email: zhuoyuan93@gmail.com
  */
 
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 
 ScreenScaleProperties _instance;
@@ -11,8 +13,7 @@ const int screenDefaultHeight = 1920;
 
 // ignore: non_constant_identifier_names
 ScreenScaleProperties get ScreenScale {
-  if (_instance == null) throw "Screen properties not initialized.";
-  return _instance;
+  return _instance ??= ScreenScaleProperties(allowFontScaling: true);
 }
 
 class ScreenScaleProperties {
@@ -73,17 +74,31 @@ class ScreenScaleProperties {
       : scaleWidth = screenWidth / (uiWidthPx * pixelRatio),
         scaleHeight = screenHeight / (uiHeightPx * pixelRatio);
 
-  factory ScreenScaleProperties(
-      {double width, double height, bool allowFontScaling}) {
-    if (width == null && height == null && allowFontScaling == null) {
+  factory ScreenScaleProperties({
+    double width,
+    double height,
+    bool allowFontScaling,
+    double maxWidth,
+  }) {
+    if (maxWidth == null &&
+        width == null &&
+        height == null &&
+        allowFontScaling == null) {
       return ScreenScale;
     }
+    final pixelRatio = WidgetsBinding.instance.window.devicePixelRatio;
+    final physicalWidth = WidgetsBinding.instance.window.physicalSize.width;
+    var widthCalc = maxWidth != null
+        ? math.min(maxWidth * pixelRatio, physicalWidth)
+        : physicalWidth;
     return _instance = ScreenScaleProperties._(
-      uiWidthPx: width ?? WidgetsBinding.instance.window.physicalSize.width,
-      uiHeightPx: height ?? WidgetsBinding.instance.window.physicalSize.height,
+      uiWidthPx: width ??
+          WidgetsBinding.instance.window.physicalSize.width / pixelRatio,
+      uiHeightPx: height ??
+          (WidgetsBinding.instance.window.physicalSize.height / pixelRatio),
       allowFontScaling: allowFontScaling ?? false,
       pixelRatio: WidgetsBinding.instance.window.devicePixelRatio,
-      screenWidth: WidgetsBinding.instance.window.physicalSize.width,
+      screenWidth: widthCalc,
       screenHeight: WidgetsBinding.instance.window.physicalSize.height,
       statusBarHeight: WidgetsBinding.instance.window.padding.top,
       bottomBarHeight: WidgetsBinding.instance.window.padding.bottom,
@@ -91,10 +106,17 @@ class ScreenScaleProperties {
     );
   }
 
-  ScreenScaleProperties init(
-      {double width, double height, bool allowFontScaling}) {
+  ScreenScaleProperties init({
+    double width,
+    double height,
+    bool allowFontScaling,
+    double maxWidth,
+  }) {
     return ScreenScaleProperties(
-        width: width, height: height, allowFontScaling: allowFontScaling);
+        width: width,
+        height: height,
+        maxWidth: maxWidth,
+        allowFontScaling: allowFontScaling);
   }
 
   double get scaleText => scaleWidth;
