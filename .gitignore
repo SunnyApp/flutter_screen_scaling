@@ -21,3 +21,5 @@ doc
 coverage*
 *.iml
 *.lock
+/example/ios/Flutter/.last_build_id
+/example/ios/Flutter/Flutter.podspec

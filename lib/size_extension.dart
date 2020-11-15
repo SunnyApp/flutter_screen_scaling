@@ -2,6 +2,8 @@ import 'screen_scale_properties.dart';
 
 void sizeExtensions() {}
 
+class Px {}
+
 extension SizeExtension on num {
   ///[ScreenScale.setWidth]
   double get w => ScreenScale.convertWidth(this);
