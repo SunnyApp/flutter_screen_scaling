@@ -13,7 +13,8 @@ const int screenDefaultHeight = 1920;
 
 // ignore: non_constant_identifier_names
 ScreenScaleProperties get ScreenScale {
-  return _instance ??= ScreenScaleProperties(allowFontScaling: true);
+  return _instance ??=
+      ScreenScaleProperties(allowFontScaling: true, allowSubpixel: true);
 }
 
 class ScreenScaleProperties {
@@ -25,6 +26,8 @@ class ScreenScaleProperties {
   /// 控制字体是否要根据系统的“字体大小”辅助选项来进行缩放。默认值为false。
   /// allowFontScaling Specifies whether fonts should scale to respect Text Size accessibility settings. The default is false.
   final bool allowFontScaling;
+
+  final bool allowSubpixel;
 
   /// 每个逻辑像素的字体像素数，字体的缩放比例
   /// The number of font pixels for each logical pixel.
@@ -65,6 +68,7 @@ class ScreenScaleProperties {
       {@required this.uiWidthPx,
       @required this.uiHeightPx,
       @required this.allowFontScaling,
+      @required this.allowSubpixel,
       @required this.screenWidth,
       @required this.screenHeight,
       @required this.pixelRatio,
@@ -78,6 +82,7 @@ class ScreenScaleProperties {
     double width,
     double height,
     bool allowFontScaling,
+    @required bool allowSubpixel,
     double maxWidth,
   }) {
     if (maxWidth == null &&
@@ -97,6 +102,7 @@ class ScreenScaleProperties {
       uiHeightPx: height ??
           (WidgetsBinding.instance.window.physicalSize.height / pixelRatio),
       allowFontScaling: allowFontScaling ?? false,
+      allowSubpixel: allowSubpixel ?? allowFontScaling ?? false,
       pixelRatio: WidgetsBinding.instance.window.devicePixelRatio,
       screenWidth: widthCalc,
       screenHeight: WidgetsBinding.instance.window.physicalSize.height,
@@ -110,13 +116,15 @@ class ScreenScaleProperties {
     double width,
     double height,
     bool allowFontScaling,
+    @required bool allowSubpixel,
     double maxWidth,
   }) {
     return ScreenScaleProperties(
         width: width,
         height: height,
         maxWidth: maxWidth,
-        allowFontScaling: allowFontScaling);
+        allowFontScaling: allowFontScaling,
+        allowSubpixel: allowSubpixel);
   }
 
   double get scaleText => scaleWidth;
@@ -143,10 +151,14 @@ class ScreenScaleProperties {
   ///Font size adaptation method
   ///@param [fontSize] The size of the font on the UI design, in px.
   ///@param [allowFontScaling]
-  double convertFontSize(num fontSize, {bool allowFontScaling}) {
+  double convertFontSize(num fontSize,
+      {bool allowFontScaling, bool allowSubpixel}) {
+    allowSubpixel ??= this.allowSubpixel;
     allowFontScaling ??= this.allowFontScaling;
-    return allowFontScaling
+    var scaling = allowFontScaling
         ? (scaleText * fontSize)
         : ((scaleText * fontSize) / textScaleFactor);
+
+    return allowSubpixel ? scaling : scaling.roundToDouble();
   }
 }
