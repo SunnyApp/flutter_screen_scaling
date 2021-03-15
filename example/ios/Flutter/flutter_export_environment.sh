@@ -1,6 +1,6 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
-export "FLUTTER_ROOT=/Users/ericm/fvm/versions/master"
+export "FLUTTER_ROOT=/Users/ericm/fvm/versions/2.0.1"
 export "FLUTTER_APPLICATION_PATH=/Users/ericm/sunny/local_plugins/flutter_screen_scaling/example"
 export "FLUTTER_TARGET=lib/main.dart"
 export "FLUTTER_BUILD_DIR=build"

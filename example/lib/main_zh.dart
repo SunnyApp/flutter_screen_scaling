@@ -12,13 +12,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(),
+      home: MyHomePage(title: "Flutter Screen Util"),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key key, this.title}) : super(key: key);
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
@@ -31,14 +31,15 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     //设置适配尺寸 (填入设计稿中设备的屏幕尺寸) 此处假如设计稿是按iPhone6的尺寸设计的(iPhone6 750*1334)
 
-    ScreenScaleProperties(width: 750, height: 1334, allowFontScaling: false);
+    ScreenScaleProperties(
+        width: 750, height: 1334, allowFontScaling: false, allowSubpixel: true);
 
     return ExampleWidget(title: 'FlutterScreenUtil示例');
   }
 }
 
 class ExampleWidget extends StatefulWidget {
-  const ExampleWidget({Key key, this.title}) : super(key: key);
+  const ExampleWidget({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
@@ -128,7 +129,10 @@ class _ExampleWidgetState extends State<ExampleWidget> {
         child: Icon(Icons.title),
         onPressed: () {
           ScreenScaleProperties(
-              width: 1500, height: 1334, allowFontScaling: false);
+              width: 1500,
+              height: 1334,
+              allowFontScaling: false,
+              allowSubpixel: true);
           setState(() {});
         },
       ),

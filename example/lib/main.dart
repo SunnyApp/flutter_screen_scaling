@@ -28,14 +28,15 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     //Set the fit size (fill in the screen size of the device in the design) If the design is based on the size of the iPhone6 ​​(iPhone6 ​​750*1334)
-    ScreenScaleProperties(width: 750, height: 1334, allowFontScaling: false);
+    ScreenScaleProperties(
+        width: 750, height: 1334, allowFontScaling: false, allowSubpixel: true);
 
     return ExampleWidget(title: 'Screen Scaling Demo');
   }
 }
 
 class ExampleWidget extends StatefulWidget {
-  const ExampleWidget({Key key, this.title}) : super(key: key);
+  const ExampleWidget({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
@@ -126,7 +127,12 @@ class _ExampleWidgetState extends State<ExampleWidget> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.title),
         onPressed: () {
-          ScreenScale.init(width: 1500, height: 1334, allowFontScaling: false);
+          ScreenScale.init(
+            width: 1500,
+            height: 1334,
+            allowFontScaling: false,
+            allowSubpixel: true,
+          );
           setState(() {});
         },
       ),

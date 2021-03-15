@@ -7,7 +7,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
-ScreenScaleProperties _instance;
+ScreenScaleProperties? _instance;
 const int screenDefaultWidth = 1080;
 const int screenDefaultHeight = 1920;
 
@@ -65,25 +65,25 @@ class ScreenScaleProperties {
   final double scaleHeight;
 
   ScreenScaleProperties._(
-      {@required this.uiWidthPx,
-      @required this.uiHeightPx,
-      @required this.allowFontScaling,
-      @required this.allowSubpixel,
-      @required this.screenWidth,
-      @required this.screenHeight,
-      @required this.pixelRatio,
-      @required this.statusBarHeight,
-      @required this.bottomBarHeight,
-      @required this.textScaleFactor})
+      {required this.uiWidthPx,
+      required this.uiHeightPx,
+      required this.allowFontScaling,
+      required this.allowSubpixel,
+      required this.screenWidth,
+      required this.screenHeight,
+      required this.pixelRatio,
+      required this.statusBarHeight,
+      required this.bottomBarHeight,
+      required this.textScaleFactor})
       : scaleWidth = screenWidth / (uiWidthPx * pixelRatio),
         scaleHeight = screenHeight / (uiHeightPx * pixelRatio);
 
   factory ScreenScaleProperties({
-    double width,
-    double height,
-    bool allowFontScaling,
-    @required bool allowSubpixel,
-    double maxWidth,
+    double? width,
+    double? height,
+    bool? allowFontScaling,
+    required bool allowSubpixel,
+    double? maxWidth,
   }) {
     if (maxWidth == null &&
         width == null &&
@@ -91,33 +91,33 @@ class ScreenScaleProperties {
         allowFontScaling == null) {
       return ScreenScale;
     }
-    final pixelRatio = WidgetsBinding.instance.window.devicePixelRatio;
-    final physicalWidth = WidgetsBinding.instance.window.physicalSize.width;
+    final pixelRatio = WidgetsBinding.instance!.window.devicePixelRatio;
+    final physicalWidth = WidgetsBinding.instance!.window.physicalSize.width;
     var widthCalc = maxWidth != null
         ? math.min(maxWidth * pixelRatio, physicalWidth)
         : physicalWidth;
     return _instance = ScreenScaleProperties._(
       uiWidthPx: width ??
-          WidgetsBinding.instance.window.physicalSize.width / pixelRatio,
+          WidgetsBinding.instance!.window.physicalSize.width / pixelRatio,
       uiHeightPx: height ??
-          (WidgetsBinding.instance.window.physicalSize.height / pixelRatio),
+          (WidgetsBinding.instance!.window.physicalSize.height / pixelRatio),
       allowFontScaling: allowFontScaling ?? false,
       allowSubpixel: allowSubpixel ?? allowFontScaling ?? false,
-      pixelRatio: WidgetsBinding.instance.window.devicePixelRatio,
+      pixelRatio: WidgetsBinding.instance!.window.devicePixelRatio,
       screenWidth: widthCalc,
-      screenHeight: WidgetsBinding.instance.window.physicalSize.height,
-      statusBarHeight: WidgetsBinding.instance.window.padding.top,
-      bottomBarHeight: WidgetsBinding.instance.window.padding.bottom,
-      textScaleFactor: WidgetsBinding.instance.window.textScaleFactor,
+      screenHeight: WidgetsBinding.instance!.window.physicalSize.height,
+      statusBarHeight: WidgetsBinding.instance!.window.padding.top,
+      bottomBarHeight: WidgetsBinding.instance!.window.padding.bottom,
+      textScaleFactor: WidgetsBinding.instance!.window.textScaleFactor,
     );
   }
 
   ScreenScaleProperties init({
-    double width,
-    double height,
-    bool allowFontScaling,
-    @required bool allowSubpixel,
-    double maxWidth,
+    double? width,
+    double? height,
+    bool? allowFontScaling,
+    required bool allowSubpixel,
+    double? maxWidth,
   }) {
     return ScreenScaleProperties(
         width: width,
@@ -152,7 +152,7 @@ class ScreenScaleProperties {
   ///@param [fontSize] The size of the font on the UI design, in px.
   ///@param [allowFontScaling]
   double convertFontSize(num fontSize,
-      {bool allowFontScaling, bool allowSubpixel}) {
+      {bool? allowFontScaling, bool? allowSubpixel}) {
     allowSubpixel ??= this.allowSubpixel;
     allowFontScaling ??= this.allowFontScaling;
     var scaling = allowFontScaling
