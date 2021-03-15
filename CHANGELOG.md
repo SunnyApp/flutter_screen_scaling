@@ -1,3 +1,8 @@
+## [3.3.2+1]
+ * Adding build scriptss
+null-safety
+Generated file
+
 <!--
  * @Author: zhuoyuan93@gmail.com
  * @Date: 2018-10-16 19:43:03

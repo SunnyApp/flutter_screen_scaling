@@ -1,19 +1,12 @@
 name: flutter_screen_scaling
-description: A fork of flutter_screenutil with minor changes to the structure
-version: 3.3.2
+version: 3.3.2+1
 homepage: https://github.com/SunnyFlutter/flutter_screen_scaling
-
-environment:
+description: A fork of flutter_screenutil with minor changes to the structure
+environment: 
   sdk: '>=2.12.0 <3.0.0'
-
-dependencies:
-  flutter:
+dependencies: 
+  flutter: 
     sdk: flutter
-
-dev_dependencies:
-  flutter_test:
+dev_dependencies: 
+  flutter_test: 
     sdk: flutter
-
-# For information on the generic Dart part of this file, see the
-# following page: https://www.dartlang.org/tools/pub/pubspec
-
