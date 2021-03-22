@@ -1,3 +1,7 @@
+## [3.3.2+2]
+ * Rm gemfile
+Update version
+
 ## [3.3.2+1]
  * Adding build scriptss
 null-safety
