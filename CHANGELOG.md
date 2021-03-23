@@ -1,3 +1,7 @@
+## [3.3.2+3]
+ * Fixing analyzer warning
+README
+
 ## [3.3.2+2]
  * Rm gemfile
 Update version
