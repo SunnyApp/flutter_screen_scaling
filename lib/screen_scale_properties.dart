@@ -82,7 +82,7 @@ class ScreenScaleProperties {
     double? width,
     double? height,
     bool? allowFontScaling,
-    required bool allowSubpixel,
+    bool? allowSubpixel,
     double? maxWidth,
   }) {
     if (maxWidth == null &&

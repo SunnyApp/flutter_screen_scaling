@@ -5,8 +5,10 @@ description: A fork of flutter_screenutil with minor changes to the structure
 environment: 
   sdk: '>=2.12.0 <3.0.0'
 dependencies: 
-  flutter: 
+  flutter:
     sdk: flutter
-dev_dependencies: 
-  flutter_test: 
+dev_dependencies:
+  pedantic: ^1.11.0
+  dartxx: ^0.5.0+2
+  flutter_test:
     sdk: flutter
